@@ -21,32 +21,30 @@ class UsersController < ApplicationController
   end
 
   def show
-    render json: @user
+    render json: @params_user
   end
 
   def update
-    @edited_user = User.find(params[:id])
-
     if !@user.can_make_changes?(params[:id])
       return render json: { message: "Você não tem permissão para essa ação" }, status: :unauthorized
     end
 
-    if @edited_user.update(user_params)
-      render json: @edited_user
+    if @params_user.update(user_params)
+      render json: @params_user
     else
-      render json: @edited_user.errors, status: :unprocessable_entity
+      render json: @params_user.errors, status: :unprocessable_entity
     end
   end
 
   def destroy
-    @destroyed_user = User.find(params[:id])
-
     if !@user.can_make_changes?(params[:id])
       return render json: { message: "Você não tem permissão para essa ação" }, status: :unauthorized
     end
 
-    if @destroyed_user.destroy!
+    if @params_user.destroy!
       render json: { message: "deleted" }, status: 200
+    else
+      render json: { message: "there was an error" }, status: :unprocessable_entity
     end
   end
 
@@ -67,6 +65,10 @@ class UsersController < ApplicationController
   end
 
   private
+
+  def set_user
+    @params_user = User.find(params[:id])
+  end
 
   def user_params
     params.permit(:name, :password, :birthdate, :cpf, :email, :phone, :address, :cep, :city, :uf, :role)

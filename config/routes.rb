@@ -7,5 +7,6 @@ Rails.application.routes.draw do
   delete "/users/:id", to: "users#destroy", as: "users_destroy"
   # login
   post "/login", to: "users#login"
+  # retorna usuario logado
   get "/auto_login", to: "users#auto_login"
 end

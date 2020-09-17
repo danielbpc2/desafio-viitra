@@ -6,7 +6,7 @@ class User < ApplicationRecord
   validates :email, presence: true
   # verificação de password
   validates :password, length: { minimum: 8 }, allow_nil: false, allow_blank: true
-  validates :password, presence: true
+  validates :password, presence: true, on: :create
 
   # verifica se o usuario pode alterar dados
   def can_make_changes?(user_id)
