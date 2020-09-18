@@ -6,6 +6,7 @@ import { FiUpload } from "react-icons/fi";
 
 import { Link, useHistory } from "react-router-dom";
 import axios from "axios";
+import api from "../../services/api";
 
 interface UFResponse {
   nome: string;
@@ -15,13 +16,16 @@ interface CityResponse {
   nome: string;
 }
 
+
 const Register = () => {
   const history = useHistory();
 
   const [formData, setFormdata] = useState({
     email: "",
+    name: "",
     password: "",
     cpf: "",
+    phone: "",
     birthdate: "",
     address: "",
     cep: "",
@@ -57,9 +61,12 @@ const Register = () => {
       });
   }, [selectedUf]);
 
-  function handleRegister(event: FormEvent) {
+  async function handleRegister(event: FormEvent) {
     event.preventDefault();
-    history.push("/dashboard");
+    const createdUser = await api.post('/users',{...formData, city: selectedCity, uf: selectedUf})
+    if(!createdUser.data.error){
+      history.push("/login");
+    }
   }
 
   function handleChange(event: ChangeEvent<HTMLInputElement>) {
@@ -98,6 +105,7 @@ const Register = () => {
                       placeholder="E-mail"
                       type="email"
                       name="email"
+                      value={formData.email}
                     />
                   </div>
                   <div className="field">
@@ -106,6 +114,7 @@ const Register = () => {
                       type="password"
                       name="password"
                       onChange={handleChange}
+                      value={formData.password}
                     />
                   </div>
                 </div>
@@ -115,6 +124,7 @@ const Register = () => {
                     placeholder="Nome Completo"
                     type="text"
                     name="name"
+                    value={formData.name}
                   />
                 </div>
                 <div className="field">
@@ -127,6 +137,7 @@ const Register = () => {
                     max={`${new Date().getFullYear()}-${(
                       "0" + new Date().getMonth()
                     ).slice(-2)}-${("0" + new Date().getDate()).slice(-2)}`}
+                    value={formData.birthdate}
                   />
                 </div>
                 <div className="field">
@@ -135,6 +146,7 @@ const Register = () => {
                     placeholder="CPF"
                     type="text"
                     name="cpf"
+                    value={formData.cpf}
                   />
                 </div>
                 <div className="field">
@@ -143,6 +155,7 @@ const Register = () => {
                     placeholder="Telefone"
                     type="text"
                     name="phone"
+                    value={formData.phone}
                   />
                 </div>
                 <div className="field">
@@ -151,6 +164,7 @@ const Register = () => {
                     placeholder="CEP"
                     type="text"
                     name="cep"
+                    value={formData.cep}
                   />
                 </div>
                 <div className="field-group">
@@ -189,6 +203,7 @@ const Register = () => {
                     placeholder="Endereço"
                     type="text"
                     name="address"
+                    value={formData.address}
                   />
                 </div>
                 <button type="submit" className="register-button">

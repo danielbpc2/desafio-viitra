@@ -40,7 +40,6 @@ const PersonForm: React.FC<FormProps> = (props) => {
       if (props.id === undefined ){return};
       const {id, token} = props
       api.get(`/people/${id}`,{headers: {"Authorization": "Bearer " + token}}).then(response => {
-        console.log(response.data)
         setFormdata({
         name: response.data.name,
         email: response.data.email,

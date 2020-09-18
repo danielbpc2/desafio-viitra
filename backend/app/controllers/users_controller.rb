@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :authorized, except: [:login]
+  before_action :authorized, except: [:login, :create]
 
   def index
     @users = User.all
@@ -30,7 +30,7 @@ class UsersController < ApplicationController
       token = encode_token({ user_id: @new_user.id })
       render json: @new_user
     else
-      render json: @new_user.errors, status: :unprocessable_entity
+      render json: { error: true, errors: @new_user.errors }, status: :unprocessable_entity
     end
   end
 
