@@ -1,4 +1,4 @@
-import React, { ChangeEvent, FormEvent } from "react";
+import React, { ChangeEvent, FormEvent, useState } from "react";
 import logo from "../../assets/viitrafio.svg";
 import "./styles.css";
 
@@ -6,8 +6,15 @@ import { Link } from "react-router-dom";
 import { FiLogIn } from "react-icons/fi";
 
 const Login = () => {
+  const [formData, setFormdata] = useState({ email: "", password: "" });
+
   function handleLogin(event: FormEvent) {
     event.preventDefault();
+  }
+
+  function handleChange(event: ChangeEvent<HTMLInputElement>) {
+    const { name, value } = event.target;
+    setFormdata({ ...formData, [name]: value });
   }
 
   return (
@@ -24,13 +31,19 @@ const Login = () => {
               <form>
                 <h1>Log-in</h1>
                 <div className="field">
-                  <input placeholder="E-mail" type="email" name="email" />
+                  <input
+                    onChange={handleChange}
+                    placeholder="E-mail"
+                    type="email"
+                    name="email"
+                  />
                 </div>
                 <div className="field">
                   <input
                     placeholder="Password"
                     type="password"
                     name="password"
+                    onChange={handleChange}
                   />
                 </div>
                 <button onClick={handleLogin} className="login-button">
@@ -40,7 +53,7 @@ const Login = () => {
                   <strong>Entrar</strong>
                 </button>
                 ou
-                <a>cadastre-se</a>
+                <Link to="">cadastre-se</Link>
               </form>
             </div>
           </main>

@@ -23,7 +23,7 @@ const Home = () => {
               <strong>Entrar</strong>
             </Link>
             ou
-            <a>cadastre-se</a>
+            <Link to="">cadastre-se</Link>
           </main>
         </div>
       </div>
