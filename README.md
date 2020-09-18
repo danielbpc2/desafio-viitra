@@ -9,6 +9,20 @@ O teste consiste no desenvolvimento de um CRUD em 48h para testar a minha criati
 ● Editar os dados do usuário<br/>
 ● Deletar usuários a partir da tela de listagem ou de edição <br/>
 
+#### 💻 O que esse sistema faz
+
+   Este sistema é um gerenciador e armazenador de informações de usuário, ao se registrar você pode: <br/>
+   * Cadastrar informações de usuário (Nome, CPF, Data Nascimento, Email, Telefone, Endereço, CEP, Cidade, Estado)<br/>
+   * Apagar e editar tais informações adicionadas.
+   
+## 📚 Tecnologias usadas:
+
+- [Autenticação JWT](https://github.com/jwt/ruby-jwt)
+- [Ruby on Rails](https://github.com/rails/rails)
+- [React](https://github.com/facebook/react)
+- [Typescript](https://github.com/microsoft/TypeScript)
+- [Prettier](https://github.com/prettier/prettier)
+
 ## 🖥O necessário para rodar essa aplicação:
 
 * Ruby versão '2.5.6'
