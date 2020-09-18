@@ -32,3 +32,16 @@ User.create!({
   city: "recife",
   uf: "Pe",
 })
+
+Person.create!({
+  name: "Diego Carvalho",
+  cpf: "111.123.123-00",
+  birthday: "19/07/2020",
+  email: "diegoP@email.com",
+  address: "rua ali perto",
+  phone: "999999999",
+  cep: "51202-123",
+  city: "Recife",
+  uf: "PE",
+  user_id: User.first,
+})

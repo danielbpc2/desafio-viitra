@@ -3,7 +3,21 @@ class UsersController < ApplicationController
 
   def index
     @users = User.all
-    render json: @users
+    response = @users.map { |user|
+      { id: user.id, name: user.name, address: user.address,
+        cpf: @user.cpf,
+        birthdate: @user.birthdate,
+        email: @user.email,
+        phone: @user.phone,
+        address: @user.address,
+        cep: @user.cep,
+        city: @user.city,
+        uf: @user.uf,
+        created_at: @user.created_at,
+        updated_at: @user.updated_at,
+        role: @user.role }
+    }
+    render json: response
   end
 
   def create
