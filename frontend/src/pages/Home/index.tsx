@@ -2,7 +2,7 @@ import React from "react";
 import logo from "../../assets/viitrafio.svg";
 import "./styles.css";
 
-import {} from "react-icons";
+import { FiLogIn } from "react-icons/fi";
 
 const Home = () => {
   return (
@@ -16,8 +16,10 @@ const Home = () => {
             <h1>Armazene os dados de seus usuários.</h1>
             <p>Salve os dados de seus usuários com rapidez e organização.</p>
             <a className="home-button">
-              <span>Icon</span>
-              <strong>Comece Já</strong>
+              <span>
+                <FiLogIn />
+              </span>
+              <strong>Entrar</strong>
             </a>
             ou
             <a>cadastra-se</a>
