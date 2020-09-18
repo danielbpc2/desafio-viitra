@@ -1,0 +1,47 @@
+.person-content {
+  display: flex;
+}
+
+.card-person {
+  overflow: hidden;
+  height: 120px;
+  background: white;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 20px;
+}
+
+.card-person img {
+  height: 100%;
+  width: 120px;
+  object-fit: cover;
+}
+
+.card-person h2 {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.card-person p {
+  font-size: 12px;
+  line-height: 1.4;
+  opacity: 0.7;
+  margin-bottom: 0;
+  margin-top: 8px;
+}
+
+.card-person .card-person-infos {
+  padding: 16px;
+}
+
+.card-person-footer {
+  display: flex;
+  flex-direction: row;
+}
+
+.card-person-footer h1 {
+  margin-right: 8px;
+}

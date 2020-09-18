@@ -1,5 +1,6 @@
 .login-wrapper {
   background-color: #fff6ee;
+  overflow: auto;
 }
 .login-container {
   height: 100vh;

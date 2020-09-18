@@ -1,5 +1,6 @@
 .home-wrapper {
   background-color: #fff6ee;
+  overflow: auto;
 }
 .home-container {
   height: 100vh;
