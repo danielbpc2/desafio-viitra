@@ -15,9 +15,10 @@ interface PersonItemsProps {
     uf: string;
     city: string;
     address: string;
+    phone: string;
   };
 
-  handleDelete?: Function;
+  handleDelete: Function;
 }
 
 const PersonItem: React.FC<PersonItemsProps> = (props) => {
@@ -31,27 +32,30 @@ const PersonItem: React.FC<PersonItemsProps> = (props) => {
     uf,
     city,
     address,
+    phone,
   } = props.personData;
+
   return (
     <li className="card-person">
       <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
       <div className="card-person-infos">
-        <h2>{name}</h2>
-        <p>
-          Product description with <strong>relevant info</strong> only.
-        </p>
+        <Link to={`/persons/${id}`}>
+          <h2>{name}</h2>
+        </Link>
+        <p>E-mail: {email}</p>
+        <p>Telefone: {phone}</p>
       </div>
       <div className="card-person-footer">
-        <Link to="">
+        <Link to={`/person/edit/${id}`}>
           <h1>
             <FiEdit />
           </h1>
         </Link>
-        <Link to="">
+        <span onClick={() => props.handleDelete(id)}>
           <h1>
             <FiTrash2 />
           </h1>
-        </Link>
+        </span>
       </div>
     </li>
   );

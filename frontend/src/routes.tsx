@@ -18,7 +18,7 @@ function Routes() {
       <Route component={Dashboard} path="/dashboard" />
       <Route component={Details} path="/persons/:id" />
       <Route component={CreatePerson} path="/createPerson" />
-      <Route component={EditPerson} path="persons/:id/edit" />
+      <Route component={EditPerson} path="/person/edit/:id" />
     </BrowserRouter>
   );
 }

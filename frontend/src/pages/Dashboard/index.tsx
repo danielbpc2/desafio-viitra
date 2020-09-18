@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./styles.css";
 
+import { Link } from "react-router-dom";
 import logo from "../../assets/viitrafio.svg";
 
 import PersonItem from "../../Components/PersonItem";
@@ -17,6 +18,7 @@ const Dashboard = () => {
       uf: "PE",
       city: "Recife",
       address: "Rua Faustino Porto, 200",
+      phone: "81998301892",
     },
     {
       id: 2,
@@ -28,8 +30,11 @@ const Dashboard = () => {
       uf: "PE",
       city: "Serra Talhada",
       address: "Rua Aqui perto la longe, 200",
+      phone: "81998301892",
     },
   ]);
+
+  function handleDelete() {}
 
   return (
     <div className="dashboard-background">
@@ -38,11 +43,17 @@ const Dashboard = () => {
           <img src={logo} alt="Viitrafio" className="logo" />
         </header>
         <main>
-          <div className="dashboard-button">Cadastrar Novo Usuário</div>
+          <Link to="/createPerson" className="dashboard-button">
+            Cadastrar Novo Usuário
+          </Link>
           <div className="dashboard-list">
             <ul>
               {persons.map((person) => (
-                <PersonItem key={person.id} personData={person} />
+                <PersonItem
+                  key={person.id}
+                  personData={person}
+                  handleDelete={handleDelete}
+                />
               ))}
             </ul>
           </div>

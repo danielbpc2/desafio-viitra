@@ -22,7 +22,6 @@ interface FormProps {
 const PersonForm: React.FC<FormProps> = (props) => {
   const [formData, setFormdata] = useState({
     email: "",
-    password: "",
     cpf: "",
     birthdate: "",
     address: "",
@@ -77,32 +76,21 @@ const PersonForm: React.FC<FormProps> = (props) => {
 
   return (
     <div className="personForm-form">
-      <form onSubmit={(event) => props.handleSubmit(event)}>
-        <h1>Cadastro</h1>
-        <div className="field-group">
-          <div className="field">
-            <input
-              onChange={handleChange}
-              placeholder="E-mail"
-              type="email"
-              name="email"
-            />
-          </div>
-          <div className="field">
-            <input
-              placeholder="Senha"
-              type="password"
-              name="password"
-              onChange={handleChange}
-            />
-          </div>
-        </div>
+      <form onSubmit={(event) => props.handleSubmit(event, formData)}>
         <div className="field">
           <input
             onChange={handleChange}
             placeholder="Nome Completo"
             type="text"
             name="name"
+          />
+        </div>
+        <div className="field">
+          <input
+            onChange={handleChange}
+            placeholder="E-mail"
+            type="email"
+            name="email"
           />
         </div>
         <div className="field">

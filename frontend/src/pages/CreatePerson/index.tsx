@@ -12,6 +12,7 @@ const CreatePerson = () => {
 
   function handleSubmit(event: FormEvent, formData: Object) {
     event.preventDefault();
+    console.log(formData);
     history.push("/dashboard");
   }
 
@@ -25,6 +26,7 @@ const CreatePerson = () => {
             </Link>
           </header>
           <main>
+            <h1>Cadastro</h1>
             <PersonForm handleSubmit={handleSubmit} />
           </main>
         </div>

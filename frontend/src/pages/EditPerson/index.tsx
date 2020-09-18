@@ -10,8 +10,10 @@ import axios from "axios";
 const EditPerson = () => {
   const history = useHistory();
 
+  useEffect(() => {}, []);
   function handleSubmit(event: FormEvent, formData: Object) {
     event.preventDefault();
+    console.log(formData);
     history.push("/dashboard");
   }
 
@@ -25,6 +27,7 @@ const EditPerson = () => {
             </Link>
           </header>
           <main>
+            <h1>Edição</h1>
             <PersonForm handleSubmit={handleSubmit} />
           </main>
         </div>
