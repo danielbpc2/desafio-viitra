@@ -32,7 +32,7 @@ const Dashboard = () => {
     },[])
   
   function handleDelete(id:number) {
-    const filteredPersons = persons.filter(person => person.id != id)
+    const filteredPersons = persons.filter(person => person.id !== id)
     api.delete(`/people/${id}`, {headers: {"Authorization": "Bearer " + token}})
     setPersons(filteredPersons);
   }

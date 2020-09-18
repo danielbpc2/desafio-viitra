@@ -27,18 +27,12 @@ const PersonItem: React.FC<PersonItemsProps> = (props) => {
     id,
     name,
     email,
-    cpf,
-    birthdate,
-    cep,
-    uf,
-    city,
-    address,
     phone,
   } = props.personData;
 
   return (
     <li className="card-person">
-      <img src={photo} />
+      <img src={photo} alt="foto do user" />
       <div className="card-person-infos">
         <Link to={`/persons/${id}`}>
           <h2>{name}</h2>

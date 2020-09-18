@@ -1,11 +1,10 @@
-import React, { ChangeEvent, FormEvent, useState, useEffect, useContext } from "react";
+import React, { FormEvent, useContext } from "react";
 import logo from "../../assets/viitrafio.svg";
 import "./styles.css";
 
 import PersonForm from "../../Components/PersonForm";
 
 import { Link, useHistory, useParams } from "react-router-dom";
-import axios from "axios";
 import api from "../../services/api";
 import { JwtContext } from "../../App";
 

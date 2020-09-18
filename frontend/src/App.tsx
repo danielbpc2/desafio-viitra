@@ -1,4 +1,4 @@
-import React, {useState,useEffect, createContext} from "react";
+import React, {useState, createContext} from "react";
 import "./App.css";
 
 import Routes from "./routes";
@@ -7,7 +7,7 @@ const JwtContext = createContext('')
 
 function App() {
   const storedJwt = localStorage.getItem('token');
-  const [jwtToken, setJwtToken] = useState(storedJwt || '')
+  const [jwtToken] = useState(storedJwt || '')
   
   return (
     <div className="App">

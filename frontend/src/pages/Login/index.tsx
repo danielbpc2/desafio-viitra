@@ -2,8 +2,6 @@ import React, { ChangeEvent, FormEvent, useState} from "react";
 import logo from "../../assets/viitrafio.svg";
 import "./styles.css";
 
-import {JwtContext} from '../../App';
-
 import { Link, useHistory } from "react-router-dom";
 import { FiLogIn } from "react-icons/fi";
 

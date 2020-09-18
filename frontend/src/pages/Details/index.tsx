@@ -24,8 +24,8 @@ interface DetailParams {
   id: string | undefined;
 }
 function Details() {
-  const {id} = useParams<DetailParams>();
   const token = useContext(JwtContext)
+  const {id} = useParams<DetailParams>();
   const [details, setDetails] = useState({ 
     name: "", 
     email: "", 
@@ -39,7 +39,6 @@ function Details() {
 
   useEffect(()=> {
     api.get<Person>(`/people/${id}`, {headers: {"Authorization": "Bearer " + token}}).then(response => {
-      console.log(response.data)
       setDetails(response.data)
     })
   },[])
@@ -58,10 +57,10 @@ function Details() {
     <div className="details-background">
     <div className="details-content">
       <header>
-        <img className="logo" src={logo} alt="" />
+        <img className="logo" src={logo} alt="Viitrafio logo" />
       </header>
       <main>
-        <img id="details-photo" src={photo} alt=""/>
+        <img id="details-photo" src={photo} alt="Foto do usuario"/>
         <h3>Detalhes do usuário:</h3>
         <div className="details-info">Nome: {name}</div>
         <div className="details-info">CPF: {cpf}</div>

@@ -1,10 +1,8 @@
-import React, { ChangeEvent, FormEvent, useState, useEffect } from "react";
-import logo from "../../assets/viitrafio.svg";
+import React, { ChangeEvent, useState, useEffect } from "react";
 import "./styles.css";
 
 import { FiUpload } from "react-icons/fi";
 
-import { Link } from "react-router-dom";
 import axios from "axios";
 import api from "../../services/api";
 
@@ -39,8 +37,9 @@ const PersonForm: React.FC<FormProps> = (props) => {
     });
 
     useEffect(() => {
-      if (props.id == undefined ){return};
-      api.get(`/people/${props.id}`,{headers: {"Authorization": "Bearer " + props.token}}).then(response => {
+      if (props.id === undefined ){return};
+      const {id, token} = props
+      api.get(`/people/${id}`,{headers: {"Authorization": "Bearer " + token}}).then(response => {
         console.log(response.data)
         setFormdata({
         name: response.data.name,
