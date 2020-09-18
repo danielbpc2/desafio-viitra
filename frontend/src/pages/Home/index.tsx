@@ -2,6 +2,7 @@ import React from "react";
 import logo from "../../assets/viitrafio.svg";
 import "./styles.css";
 
+import { Link } from "react-router-dom";
 import { FiLogIn } from "react-icons/fi";
 
 const Home = () => {
@@ -15,14 +16,14 @@ const Home = () => {
           <main>
             <h1>Armazene os dados de seus usuários.</h1>
             <p>Salve os dados de seus usuários com rapidez e organização.</p>
-            <a className="home-button">
+            <Link to="/login" className="home-button">
               <span>
                 <FiLogIn />
               </span>
               <strong>Entrar</strong>
-            </a>
+            </Link>
             ou
-            <a>cadastra-se</a>
+            <a>cadastre-se</a>
           </main>
         </div>
       </div>
