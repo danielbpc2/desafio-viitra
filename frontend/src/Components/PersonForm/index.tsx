@@ -6,6 +6,7 @@ import { FiUpload } from "react-icons/fi";
 
 import { Link } from "react-router-dom";
 import axios from "axios";
+import api from "../../services/api";
 
 interface UFResponse {
   nome: string;
@@ -17,22 +18,44 @@ interface CityResponse {
 
 interface FormProps {
   handleSubmit: Function;
+  id?: string | undefined;
+  token?: string | undefined;
 }
 
 const PersonForm: React.FC<FormProps> = (props) => {
-  const [formData, setFormdata] = useState({
-    email: "",
-    cpf: "",
-    birthdate: "",
-    address: "",
-    cep: "",
-  });
-
+  
   const [ufs, setUfs] = useState<string[][]>([]);
   const [cities, setCities] = useState<string[]>([]);
   const [selectedUf, setSelectedUf] = useState("0");
   const [selectedCity, setSelectedCity] = useState("0");
+    const [formData, setFormdata] = useState({
+      name: "",
+      email: "",
+      cpf: "",
+      birthdate: "",
+      address: "",
+      cep: "",
+      phone: ""
+    });
 
+    useEffect(() => {
+      if (props.id == undefined ){return};
+      api.get(`/people/${props.id}`,{headers: {"Authorization": "Bearer " + props.token}}).then(response => {
+        console.log(response.data)
+        setFormdata({
+        name: response.data.name,
+        email: response.data.email,
+        cpf: response.data.cpf,
+        birthdate: response.data.birthdate,
+        address: response.data.address,
+        cep: response.data.cep,
+        phone: response.data.phone})
+        setSelectedUf(response.data.uf)
+        setSelectedCity(response.data.city)
+      })
+    }
+    , []);
+    
   useEffect(() => {
     axios
       .get<UFResponse[]>(
@@ -76,13 +99,14 @@ const PersonForm: React.FC<FormProps> = (props) => {
 
   return (
     <div className="personForm-form">
-      <form onSubmit={(event) => props.handleSubmit(event, formData)}>
+      <form onSubmit={(event) => props.handleSubmit(event, {...formData, city: selectedCity, uf: selectedUf})}>
         <div className="field">
           <input
             onChange={handleChange}
             placeholder="Nome Completo"
             type="text"
             name="name"
+            value={formData.name}
           />
         </div>
         <div className="field">
@@ -91,12 +115,14 @@ const PersonForm: React.FC<FormProps> = (props) => {
             placeholder="E-mail"
             type="email"
             name="email"
+            value={formData.email}
           />
         </div>
         <div className="field">
           <legend>Data de Nascimento</legend>
           <input
             onChange={handleChange}
+            value={formData.birthdate}
             type="date"
             name="birthdate"
             min="1800-01-01"
@@ -111,6 +137,7 @@ const PersonForm: React.FC<FormProps> = (props) => {
             placeholder="CPF"
             type="text"
             name="cpf"
+            value={formData.cpf}
           />
         </div>
         <div className="field">
@@ -119,6 +146,7 @@ const PersonForm: React.FC<FormProps> = (props) => {
             placeholder="Telefone"
             type="text"
             name="phone"
+            value={formData.phone}
           />
         </div>
         <div className="field">
@@ -127,6 +155,7 @@ const PersonForm: React.FC<FormProps> = (props) => {
             placeholder="CEP"
             type="text"
             name="cep"
+            value={formData.cpf}
           />
         </div>
         <div className="field-group">
@@ -161,6 +190,7 @@ const PersonForm: React.FC<FormProps> = (props) => {
             placeholder="Endereço"
             type="text"
             name="address"
+            value={formData.address}
           />
         </div>
         <button type="submit" className="personForm-button">

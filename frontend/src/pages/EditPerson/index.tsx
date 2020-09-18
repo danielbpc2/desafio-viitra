@@ -1,19 +1,26 @@
-import React, { ChangeEvent, FormEvent, useState, useEffect } from "react";
+import React, { ChangeEvent, FormEvent, useState, useEffect, useContext } from "react";
 import logo from "../../assets/viitrafio.svg";
 import "./styles.css";
 
 import PersonForm from "../../Components/PersonForm";
 
-import { Link, useHistory } from "react-router-dom";
+import { Link, useHistory, useParams } from "react-router-dom";
 import axios from "axios";
+import api from "../../services/api";
+import { JwtContext } from "../../App";
 
+interface EditParams {
+  id: string | undefined;
+}
 const EditPerson = () => {
   const history = useHistory();
 
-  useEffect(() => {}, []);
+  const token = useContext(JwtContext)
+  
+  const {id} = useParams<EditParams>();
+  
   function handleSubmit(event: FormEvent, formData: Object) {
-    event.preventDefault();
-    console.log(formData);
+    api.put(`/people/${id}`, formData, {headers: {"Authorization": "Bearer " + token}})
     history.push("/dashboard");
   }
 
@@ -28,7 +35,7 @@ const EditPerson = () => {
           </header>
           <main>
             <h1>Edição</h1>
-            <PersonForm handleSubmit={handleSubmit} />
+            <PersonForm handleSubmit={handleSubmit} id={id} token={token}/>
           </main>
         </div>
       </div>

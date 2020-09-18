@@ -1,18 +1,40 @@
-import React, { ChangeEvent, FormEvent, useState } from "react";
+import React, { ChangeEvent, FormEvent, useState} from "react";
 import logo from "../../assets/viitrafio.svg";
 import "./styles.css";
+
+import {JwtContext} from '../../App';
 
 import { Link, useHistory } from "react-router-dom";
 import { FiLogIn } from "react-icons/fi";
 
-const Login = () => {
-  const [formData, setFormdata] = useState({ email: "", password: "" });
+import api from '../../services/api'
 
+interface TokenResponse {
+  user: Object;
+  token: string;
+  error: string;
+}
+
+const Login = () => {
+  
+  const [formData, setFormdata] = useState({ email: "", password: "" });
+  const [loginError, setLoginError] = useState(false)
   const history = useHistory();
 
-  function handleLogin(event: FormEvent) {
+  async function handleLogin(event: FormEvent) {
     event.preventDefault();
+    const response = await api.post<TokenResponse>('/login', formData)
+    if(response.data.error === "Invalid username or password"){
+      return handleLoginError();
+    }
+    const token = response.data.token;
+    localStorage.setItem('token', token);
+
     history.push("/dashboard");
+  }
+
+  function handleLoginError(){
+    setLoginError(true);
   }
 
   function handleChange(event: ChangeEvent<HTMLInputElement>) {
@@ -33,6 +55,7 @@ const Login = () => {
             <div className="login-form">
               <form onSubmit={handleLogin}>
                 <h1>Log-in</h1>
+                {loginError? "A senha ou usuário está errado": ''}
                 <div className="field">
                   <input
                     onChange={handleChange}

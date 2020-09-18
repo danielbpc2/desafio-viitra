@@ -1,18 +1,21 @@
-import React, { ChangeEvent, FormEvent, useState, useEffect } from "react";
+import React, { ChangeEvent, FormEvent, useState, useEffect, useContext } from "react";
 import logo from "../../assets/viitrafio.svg";
 import "./styles.css";
 
 import PersonForm from "../../Components/PersonForm";
 
 import { Link, useHistory } from "react-router-dom";
-import axios from "axios";
+import { JwtContext } from "../../App";
+import api from "../../services/api";
 
 const CreatePerson = () => {
   const history = useHistory();
 
+  const token = useContext(JwtContext)
+ 
   function handleSubmit(event: FormEvent, formData: Object) {
     event.preventDefault();
-    console.log(formData);
+    api.post('/people', formData, {headers: {"Authorization": "Bearer " + token}})
     history.push("/dashboard");
   }
 

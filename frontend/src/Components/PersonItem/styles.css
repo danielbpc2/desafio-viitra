@@ -44,4 +44,6 @@
 
 .card-person-footer h1 {
   margin-right: 8px;
+  color: black;
+  cursor: pointer;
 }
