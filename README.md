@@ -1,7 +1,5 @@
 # README
-
-This README would normally document whatever steps are necessary to get the
-application up and running.
+[Logo](./frontend/src/assets/viitrafio.svg)
 
 Things you may want to cover:
 
