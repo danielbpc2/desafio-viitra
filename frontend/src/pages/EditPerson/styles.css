@@ -1,0 +1,190 @@
+.editPerson-wrapper {
+  background-color: #fff6ee;
+  overflow: auto;
+}
+.editPerson-container {
+  background: url("../../assets/homebackground.svg") no-repeat bottom;
+  background-size: cover;
+}
+
+.editPerson-logo {
+  height: 80px;
+}
+
+.editPerson-content header {
+  padding-top: 32px;
+}
+
+.editPerson-content {
+  width: 100%;
+  height: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.editPerson-content main {
+  flex: 1;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: top;
+  align-items: center;
+}
+
+.editPerson-content main h1 {
+  font-family: "Ubuntu";
+  font-weight: 700;
+  font-size: 34px;
+  color: #444b56;
+}
+
+.editPerson-content main p {
+  font-family: "Roboto";
+  font-weight: 400;
+  font-size: 24px;
+  color: #666f7e;
+}
+
+.editPerson-button {
+  width: 100%;
+  max-width: 360px;
+  height: 72px;
+  background: #e5ac53;
+  border-radius: 8px;
+  text-decoration: none;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+
+  transition: background-color 0.5s ease;
+  border: none;
+  color: white;
+
+  font-size: medium;
+}
+.editPerson-button:focus {
+  outline: none !important;
+  border: 1px solid rgb(255, 166, 0);
+}
+
+.editPerson-button:hover {
+  background: #ffd38d;
+}
+
+.editPerson-button span {
+  margin-right: 10px;
+}
+
+.editPerson-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  border-radius: 8px;
+  margin-top: 32px;
+  padding: 54px;
+  max-width: 730px;
+}
+
+.editPerson-form form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.editPerson-form form ::placeholder {
+  opacity: 0.5;
+}
+
+.editPerson-form form .field {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  width: 100%;
+}
+
+.editPerson-form form .field input {
+  flex: 1;
+  background: #f0f0f5;
+  border-radius: 8px;
+  border: 0;
+  padding: 16px 24px;
+  font-size: 16px;
+  color: #6c6c80;
+  margin: 10px;
+}
+
+.editPerson-form form .field input:focus {
+  outline: none !important;
+  border: 1px solid rgb(255, 166, 0);
+}
+
+.editPerson-form form .field select {
+  flex: 1;
+  background: #f0f0f5;
+  border-radius: 8px;
+  border: 0;
+  padding: 16px 24px;
+  font-size: 16px;
+  color: #6c6c80;
+  margin: 10px;
+}
+
+.editPerson-form form .field select:focus {
+  outline: none !important;
+  border: 1px solid rgb(255, 166, 0);
+}
+
+.editPerson-form form .field-group {
+  flex: 1;
+  display: flex;
+  width: 100%;
+}
+
+.editPerson-form form .field-group .field input {
+  flex: 1;
+  background: #f0f0f5;
+  border-radius: 8px;
+  border: 0;
+  padding: 16px 24px;
+  font-size: 16px;
+  color: #6c6c80;
+  margin: 10px;
+}
+
+.editPerson-form form fieldset .field input:focus {
+  outline: none !important;
+  border: 1px solid rgb(255, 166, 0);
+}
+
+@media (max-width: 900px) {
+  .editPerson-logo {
+    height: 50px;
+  }
+  .editPerson-content {
+    align-items: center;
+    text-align: center;
+  }
+
+  .editPerson-content header {
+    margin: 48px auto 0;
+  }
+
+  .editPerson-content main {
+    align-items: center;
+  }
+
+  .editPerson-content main h1 {
+    font-size: 42px;
+  }
+
+  .editPerson-content main p {
+    font-size: 24px;
+  }
+}

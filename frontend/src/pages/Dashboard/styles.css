@@ -1,0 +1,58 @@
+.dashboard-background {
+  background-color: #fff6ee;
+  overflow: auto;
+  height: 100vh;
+}
+
+.dashboard-content header .logo {
+  height: 80px;
+}
+
+.dashboard-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+.dashboard-content main {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  align-items: center;
+  width: 100%;
+}
+
+.dashboard-list {
+  width: 100%;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+.dashboard-button {
+  width: 100%;
+  max-width: 360px;
+  height: 72px;
+  background: #e5ac53;
+  border-radius: 8px;
+  text-decoration: none;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+
+  margin-top: 40px;
+
+  transition: background-color 0.5s ease;
+
+  color: white;
+}
+
+.dashboard-button:focus {
+  outline: none !important;
+  border: 1px solid rgb(255, 166, 0);
+}
+
+.dashboard-button:hover {
+  background: #ffd38d;
+}

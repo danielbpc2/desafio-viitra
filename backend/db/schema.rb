@@ -10,7 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_17_164800) do
+ActiveRecord::Schema.define(version: 2020_09_18_181939) do
+
+  create_table "people", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "name"
+    t.string "cpf"
+    t.date "birthdate"
+    t.string "email"
+    t.string "phone"
+    t.string "address"
+    t.string "cep"
+    t.string "city"
+    t.string "uf"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_people_on_user_id"
+  end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", null: false
@@ -28,4 +44,5 @@ ActiveRecord::Schema.define(version: 2020_09_17_164800) do
     t.string "role"
   end
 
+  add_foreign_key "people", "users"
 end

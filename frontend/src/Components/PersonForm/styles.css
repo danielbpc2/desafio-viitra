@@ -1,0 +1,190 @@
+.personForm-wrapper {
+  background-color: #fff6ee;
+  overflow: auto;
+}
+.personForm-container {
+  background: url("../../assets/homebackground.svg") no-repeat bottom;
+  background-size: cover;
+}
+
+.personForm-logo {
+  height: 80px;
+}
+
+.personForm-content header {
+  padding-top: 32px;
+}
+
+.personForm-content {
+  width: 100%;
+  height: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.personForm-content main {
+  flex: 1;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: top;
+  align-items: center;
+}
+
+.personForm-content main h1 {
+  font-family: "Ubuntu";
+  font-weight: 700;
+  font-size: 34px;
+  color: #444b56;
+}
+
+.personForm-content main p {
+  font-family: "Roboto";
+  font-weight: 400;
+  font-size: 24px;
+  color: #666f7e;
+}
+
+.personForm-button {
+  width: 100%;
+  max-width: 360px;
+  height: 72px;
+  background: #e5ac53;
+  border-radius: 8px;
+  text-decoration: none;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+
+  transition: background-color 0.5s ease;
+  border: none;
+  color: white;
+
+  font-size: medium;
+}
+.personForm-button:focus {
+  outline: none !important;
+  border: 1px solid rgb(255, 166, 0);
+}
+
+.personForm-button:hover {
+  background: #ffd38d;
+}
+
+.personForm-button span {
+  margin-right: 10px;
+}
+
+.personForm-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  border-radius: 8px;
+  margin-top: 32px;
+  padding: 54px;
+  max-width: 730px;
+}
+
+.personForm-form form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.personForm-form form ::placeholder {
+  opacity: 0.5;
+}
+
+.personForm-form form .field {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  width: 100%;
+}
+
+.personForm-form form .field input {
+  flex: 1;
+  background: #f0f0f5;
+  border-radius: 8px;
+  border: 0;
+  padding: 16px 24px;
+  font-size: 16px;
+  color: #6c6c80;
+  margin: 10px;
+}
+
+.personForm-form form .field input:focus {
+  outline: none !important;
+  border: 1px solid rgb(255, 166, 0);
+}
+
+.personForm-form form .field select {
+  flex: 1;
+  background: #f0f0f5;
+  border-radius: 8px;
+  border: 0;
+  padding: 16px 24px;
+  font-size: 16px;
+  color: #6c6c80;
+  margin: 10px;
+}
+
+.personForm-form form .field select:focus {
+  outline: none !important;
+  border: 1px solid rgb(255, 166, 0);
+}
+
+.personForm-form form .field-group {
+  flex: 1;
+  display: flex;
+  width: 100%;
+}
+
+.personForm-form form .field-group .field input {
+  flex: 1;
+  background: #f0f0f5;
+  border-radius: 8px;
+  border: 0;
+  padding: 16px 24px;
+  font-size: 16px;
+  color: #6c6c80;
+  margin: 10px;
+}
+
+.personForm-form form fieldset .field input:focus {
+  outline: none !important;
+  border: 1px solid rgb(255, 166, 0);
+}
+
+@media (max-width: 900px) {
+  .personForm-logo {
+    height: 50px;
+  }
+  .personForm-content {
+    align-items: center;
+    text-align: center;
+  }
+
+  .personForm-content header {
+    margin: 48px auto 0;
+  }
+
+  .personForm-content main {
+    align-items: center;
+  }
+
+  .personForm-content main h1 {
+    font-size: 42px;
+  }
+
+  .personForm-content main p {
+    font-size: 24px;
+  }
+}
