@@ -55,7 +55,7 @@ const PersonForm: React.FC<FormProps> = (props) => {
       })
     }
     , []);
-    
+
   useEffect(() => {
     axios
       .get<UFResponse[]>(
@@ -155,7 +155,7 @@ const PersonForm: React.FC<FormProps> = (props) => {
             placeholder="CEP"
             type="text"
             name="cep"
-            value={formData.cpf}
+            value={formData.cep}
           />
         </div>
         <div className="field-group">
