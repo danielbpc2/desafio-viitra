@@ -4,6 +4,7 @@ import "./styles.css";
 import { FiEdit, FiTrash2 } from "react-icons/fi";
 import { Link } from "react-router-dom";
 
+import photo from "../../assets/personCardPhoto.svg";
 interface PersonItemsProps {
   personData: {
     id: number;
@@ -37,7 +38,7 @@ const PersonItem: React.FC<PersonItemsProps> = (props) => {
 
   return (
     <li className="card-person">
-      <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+      <img src={photo} />
       <div className="card-person-infos">
         <Link to={`/persons/${id}`}>
           <h2>{name}</h2>
