@@ -4,7 +4,7 @@ import "./styles.css";
 
 import { FiUpload } from "react-icons/fi";
 
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import axios from "axios";
 
 interface UFResponse {
@@ -16,12 +16,15 @@ interface CityResponse {
 }
 
 const Register = () => {
+  const history = useHistory();
+
   const [formData, setFormdata] = useState({
     email: "",
     password: "",
     cpf: "",
     birthdate: "",
     address: "",
+    cep: "",
   });
 
   const [ufs, setUfs] = useState<string[][]>([]);
@@ -56,6 +59,7 @@ const Register = () => {
 
   function handleRegister(event: FormEvent) {
     event.preventDefault();
+    history.push("/");
   }
 
   function handleChange(event: ChangeEvent<HTMLInputElement>) {
@@ -178,6 +182,14 @@ const Register = () => {
                       ))}
                     </select>
                   </div>
+                </div>
+                <div className="field">
+                  <input
+                    onChange={handleChange}
+                    placeholder="Endereço"
+                    type="text"
+                    name="address"
+                  />
                 </div>
                 <button type="submit" className="register-button">
                   <span>

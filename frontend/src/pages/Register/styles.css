@@ -2,8 +2,6 @@
   background-color: #fff6ee;
 }
 .register-container {
-  height: 100vh;
-
   background: url("../../assets/homebackground.svg") no-repeat bottom;
   background-size: cover;
 }
