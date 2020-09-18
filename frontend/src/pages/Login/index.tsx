@@ -2,14 +2,17 @@ import React, { ChangeEvent, FormEvent, useState } from "react";
 import logo from "../../assets/viitrafio.svg";
 import "./styles.css";
 
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { FiLogIn } from "react-icons/fi";
 
 const Login = () => {
   const [formData, setFormdata] = useState({ email: "", password: "" });
 
+  const history = useHistory();
+
   function handleLogin(event: FormEvent) {
     event.preventDefault();
+    history.push("/dashboard");
   }
 
   function handleChange(event: ChangeEvent<HTMLInputElement>) {

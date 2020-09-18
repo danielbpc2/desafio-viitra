@@ -59,7 +59,7 @@ const Register = () => {
 
   function handleRegister(event: FormEvent) {
     event.preventDefault();
-    history.push("/");
+    history.push("/dashboard");
   }
 
   function handleChange(event: ChangeEvent<HTMLInputElement>) {

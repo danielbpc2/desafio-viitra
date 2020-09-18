@@ -5,7 +5,7 @@ import "./styles.css";
 import { Link } from "react-router-dom";
 import { FiLogIn } from "react-icons/fi";
 
-const Home = () => {
+function Home() {
   return (
     <div className="home-wrapper">
       <div className="home-container">
@@ -29,6 +29,6 @@ const Home = () => {
       </div>
     </div>
   );
-};
+}
 
 export default Home;
