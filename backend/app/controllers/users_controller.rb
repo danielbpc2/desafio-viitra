@@ -30,7 +30,7 @@ class UsersController < ApplicationController
       token = encode_token({ user_id: @new_user.id })
       render json: @new_user
     else
-      render json: { error: true, errors: @new_user.errors }, status: :unprocessable_entity
+      render json: { error: true, errors: @new_user.errors }, status: 200
     end
   end
 

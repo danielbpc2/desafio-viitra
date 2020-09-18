@@ -16,10 +16,10 @@ interface CityResponse {
   nome: string;
 }
 
-
 const Register = () => {
   const history = useHistory();
-
+  const [registerError, setRegisterError] = useState(false)
+  const [errors, setErrors] = useState({})
   const [formData, setFormdata] = useState({
     email: "",
     name: "",
@@ -61,12 +61,16 @@ const Register = () => {
       });
   }, [selectedUf]);
 
-  async function handleRegister(event: FormEvent) {
+  function handleRegister(event: FormEvent) {
     event.preventDefault();
-    const createdUser = await api.post('/users',{...formData, city: selectedCity, uf: selectedUf})
-    if(!createdUser.data.error){
-      history.push("/login");
-    }
+     api.post('/users',{...formData, city: selectedCity, uf: selectedUf}).then(response => {
+     if(!response.data.error){
+       history.push("/login");
+     }else{
+       setRegisterError(true);
+       setErrors(response.data.errors)
+     }
+   })
   }
 
   function handleChange(event: ChangeEvent<HTMLInputElement>) {
@@ -98,6 +102,7 @@ const Register = () => {
             <div className="register-form">
               <form onSubmit={handleRegister}>
                 <h1>Cadastro</h1>
+                {registerError ? <p>{JSON.stringify(errors)}</p> : ''}
                 <div className="field-group">
                   <div className="field">
                     <input
@@ -115,6 +120,8 @@ const Register = () => {
                       name="password"
                       onChange={handleChange}
                       value={formData.password}
+                      minLength={8}
+                      required
                     />
                   </div>
                 </div>
@@ -125,6 +132,7 @@ const Register = () => {
                     type="text"
                     name="name"
                     value={formData.name}
+                    required
                   />
                 </div>
                 <div className="field">
@@ -138,6 +146,7 @@ const Register = () => {
                       "0" + new Date().getMonth()
                     ).slice(-2)}-${("0" + new Date().getDate()).slice(-2)}`}
                     value={formData.birthdate}
+                    required
                   />
                 </div>
                 <div className="field">
@@ -147,6 +156,7 @@ const Register = () => {
                     type="text"
                     name="cpf"
                     value={formData.cpf}
+                    required
                   />
                 </div>
                 <div className="field">
@@ -156,6 +166,7 @@ const Register = () => {
                     type="text"
                     name="phone"
                     value={formData.phone}
+                    required
                   />
                 </div>
                 <div className="field">
@@ -165,6 +176,7 @@ const Register = () => {
                     type="text"
                     name="cep"
                     value={formData.cep}
+                    required
                   />
                 </div>
                 <div className="field-group">
@@ -173,6 +185,7 @@ const Register = () => {
                       value={selectedUf}
                       onChange={handleSelectUf}
                       name="uf"
+                      required
                     >
                       <option value="0">Selecione o seu Estado</option>
                       {ufs.map((uf) => (
@@ -187,6 +200,7 @@ const Register = () => {
                       onChange={handleSelectCity}
                       value={selectedCity}
                       name="city"
+                      required
                     >
                       <option value="0">Selecione sua Cidade</option>
                       {cities.map((city) => (
@@ -204,6 +218,7 @@ const Register = () => {
                     type="text"
                     name="address"
                     value={formData.address}
+                    required
                   />
                 </div>
                 <button type="submit" className="register-button">

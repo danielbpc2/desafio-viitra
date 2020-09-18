@@ -29,7 +29,7 @@ const EditPerson = () => {
       <div className="editPerson-container">
         <div className="editPerson-content">
           <header>
-            <Link to="/">
+            <Link to="/dashboard">
               <img className="editPerson-logo" src={logo} alt="Vitrafio" />
             </Link>
           </header>

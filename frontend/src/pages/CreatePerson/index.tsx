@@ -15,7 +15,9 @@ const CreatePerson = () => {
  
   function handleSubmit(event: FormEvent, formData: Object) {
     event.preventDefault();
-    api.post('/people', formData, {headers: {"Authorization": "Bearer " + token}})
+    api.post('/people', formData, {headers: {"Authorization": "Bearer " + token}}).then(response => {
+      console.log(response.data)
+    })
     history.push("/dashboard");
   }
 
@@ -24,7 +26,7 @@ const CreatePerson = () => {
       <div className="createPerson-container">
         <div className="createPerson-content">
           <header>
-            <Link to="/">
+            <Link to="/dashboard">
               <img className="createPerson-logo" src={logo} alt="Vitrafio" />
             </Link>
           </header>

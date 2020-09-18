@@ -105,6 +105,7 @@ const PersonForm: React.FC<FormProps> = (props) => {
             type="text"
             name="name"
             value={formData.name}
+            required
           />
         </div>
         <div className="field">
@@ -114,6 +115,7 @@ const PersonForm: React.FC<FormProps> = (props) => {
             type="email"
             name="email"
             value={formData.email}
+            required
           />
         </div>
         <div className="field">
@@ -127,6 +129,7 @@ const PersonForm: React.FC<FormProps> = (props) => {
             max={`${new Date().getFullYear()}-${(
               "0" + new Date().getMonth()
             ).slice(-2)}-${("0" + new Date().getDate()).slice(-2)}`}
+            required
           />
         </div>
         <div className="field">
@@ -136,6 +139,7 @@ const PersonForm: React.FC<FormProps> = (props) => {
             type="text"
             name="cpf"
             value={formData.cpf}
+            required
           />
         </div>
         <div className="field">
@@ -145,6 +149,8 @@ const PersonForm: React.FC<FormProps> = (props) => {
             type="text"
             name="phone"
             value={formData.phone}
+            maxLength={11}
+            required
           />
         </div>
         <div className="field">
@@ -154,11 +160,12 @@ const PersonForm: React.FC<FormProps> = (props) => {
             type="text"
             name="cep"
             value={formData.cep}
+            required
           />
         </div>
         <div className="field-group">
           <div className="field">
-            <select value={selectedUf} onChange={handleSelectUf} name="uf">
+            <select value={selectedUf} onChange={handleSelectUf} required name="uf">
               <option value="0">Selecione o seu Estado</option>
               {ufs.map((uf) => (
                 <option key={uf[0]} value={uf[0]}>
@@ -172,6 +179,7 @@ const PersonForm: React.FC<FormProps> = (props) => {
               onChange={handleSelectCity}
               value={selectedCity}
               name="city"
+              required
             >
               <option value="0">Selecione sua Cidade</option>
               {cities.map((city) => (
@@ -189,6 +197,7 @@ const PersonForm: React.FC<FormProps> = (props) => {
             type="text"
             name="address"
             value={formData.address}
+            required
           />
         </div>
         <button type="submit" className="personForm-button">
