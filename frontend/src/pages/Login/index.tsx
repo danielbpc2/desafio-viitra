@@ -28,7 +28,7 @@ const Login = () => {
           </header>
           <main>
             <div className="login-form">
-              <form>
+              <form onSubmit={handleLogin}>
                 <h1>Log-in</h1>
                 <div className="field">
                   <input
@@ -46,14 +46,14 @@ const Login = () => {
                     onChange={handleChange}
                   />
                 </div>
-                <button onClick={handleLogin} className="login-button">
+                <button type="submit" className="login-button">
                   <span>
                     <FiLogIn />
                   </span>
                   <strong>Entrar</strong>
                 </button>
                 ou
-                <Link to="">cadastre-se</Link>
+                <Link to="/signin">Cadastre-se</Link>
               </form>
             </div>
           </main>

@@ -1,0 +1,186 @@
+.register-wrapper {
+  background-color: #fff6ee;
+}
+.register-container {
+  height: 100vh;
+
+  background: url("../../assets/homebackground.svg") no-repeat bottom;
+  background-size: cover;
+}
+
+.register-logo {
+  height: 80px;
+}
+
+.register-content header {
+  padding-top: 32px;
+}
+
+.register-content {
+  width: 100%;
+  height: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.register-content main {
+  flex: 1;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: top;
+  align-items: center;
+}
+
+.register-content main h1 {
+  font-family: "Ubuntu";
+  font-weight: 700;
+  font-size: 34px;
+  color: #444b56;
+}
+
+.register-content main p {
+  font-family: "Roboto";
+  font-weight: 400;
+  font-size: 24px;
+  color: #666f7e;
+}
+
+.register-button {
+  width: 100%;
+  max-width: 360px;
+  height: 72px;
+  background: #e5ac53;
+  border-radius: 8px;
+  text-decoration: none;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+
+  transition: background-color 0.5s ease;
+  border: none;
+  color: white;
+
+  font-size: medium;
+}
+.register-button:focus {
+  outline: none !important;
+  border: 1px solid rgb(255, 166, 0);
+}
+
+.register-button:hover {
+  background: #ffd38d;
+}
+
+.register-button span {
+  margin-right: 10px;
+}
+
+.register-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  border-radius: 8px;
+  margin-top: 32px;
+  padding: 54px;
+  max-width: 730px;
+}
+
+.register-form form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.register-form form .field {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  width: 100%;
+}
+
+.register-form form .field input {
+  flex: 1;
+  background: #f0f0f5;
+  border-radius: 8px;
+  border: 0;
+  padding: 16px 24px;
+  font-size: 16px;
+  color: #6c6c80;
+  margin: 10px;
+}
+
+.register-form form .field input:focus {
+  outline: none !important;
+  border: 1px solid rgb(255, 166, 0);
+}
+
+.register-form form .field select {
+  flex: 1;
+  background: #f0f0f5;
+  border-radius: 8px;
+  border: 0;
+  padding: 16px 24px;
+  font-size: 16px;
+  color: #6c6c80;
+  margin: 10px;
+}
+
+.register-form form .field select:focus {
+  outline: none !important;
+  border: 1px solid rgb(255, 166, 0);
+}
+
+.register-form form .field-group {
+  flex: 1;
+  display: flex;
+}
+
+.register-form form .field-group .field input {
+  flex: 1;
+  background: #f0f0f5;
+  border-radius: 8px;
+  border: 0;
+  padding: 16px 24px;
+  font-size: 16px;
+  color: #6c6c80;
+  margin: 10px;
+}
+
+.register-form form fieldset .field input:focus {
+  outline: none !important;
+  border: 1px solid rgb(255, 166, 0);
+}
+
+@media (max-width: 900px) {
+  .register-logo {
+    height: 50px;
+  }
+  .register-content {
+    align-items: center;
+    text-align: center;
+  }
+
+  .register-content header {
+    margin: 48px auto 0;
+  }
+
+  .register-content main {
+    align-items: center;
+  }
+
+  .register-content main h1 {
+    font-size: 42px;
+  }
+
+  .register-content main p {
+    font-size: 24px;
+  }
+}
