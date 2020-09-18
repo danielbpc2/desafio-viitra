@@ -20,6 +20,7 @@ const EditPerson = () => {
   const {id} = useParams<EditParams>();
   
   function handleSubmit(event: FormEvent, formData: Object) {
+    event.preventDefault()
     api.put(`/people/${id}`, formData, {headers: {"Authorization": "Bearer " + token}})
     history.push("/dashboard");
   }
