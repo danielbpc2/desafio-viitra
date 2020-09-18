@@ -23,12 +23,7 @@ interface PersonItemsProps {
 }
 
 const PersonItem: React.FC<PersonItemsProps> = (props) => {
-  const {
-    id,
-    name,
-    email,
-    phone,
-  } = props.personData;
+  const { id, name, email, phone } = props.personData;
 
   return (
     <li className="card-person">

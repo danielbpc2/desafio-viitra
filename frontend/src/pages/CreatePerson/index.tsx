@@ -11,13 +11,17 @@ import api from "../../services/api";
 const CreatePerson = () => {
   const history = useHistory();
 
-  const token = useContext(JwtContext)
- 
+  const token = useContext(JwtContext);
+
   function handleSubmit(event: FormEvent, formData: Object) {
     event.preventDefault();
-    api.post('/people', formData, {headers: {"Authorization": "Bearer " + token}}).then(response => {
-      console.log(response.data)
-    })
+    api
+      .post("/people", formData, {
+        headers: { Authorization: "Bearer " + token },
+      })
+      .then((response) => {
+        console.log(response.data);
+      });
     history.push("/dashboard");
   }
 

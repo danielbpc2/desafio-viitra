@@ -1,11 +1,11 @@
-import React, { ChangeEvent, FormEvent, useState} from "react";
+import React, { ChangeEvent, FormEvent, useState } from "react";
 import logo from "../../assets/viitrafio.svg";
 import "./styles.css";
 
 import { Link, useHistory } from "react-router-dom";
 import { FiLogIn } from "react-icons/fi";
 
-import api from '../../services/api'
+import api from "../../services/api";
 
 interface TokenResponse {
   user: Object;
@@ -14,24 +14,23 @@ interface TokenResponse {
 }
 
 const Login = () => {
-  
   const [formData, setFormdata] = useState({ email: "", password: "" });
-  const [loginError, setLoginError] = useState(false)
+  const [loginError, setLoginError] = useState(false);
   const history = useHistory();
 
   async function handleLogin(event: FormEvent) {
     event.preventDefault();
-    const response = await api.post<TokenResponse>('/login', formData)
-    if(response.data.error === "Invalid username or password"){
+    const response = await api.post<TokenResponse>("/login", formData);
+    if (response.data.error === "Invalid username or password") {
       return handleLoginError();
     }
     const token = response.data.token;
-    localStorage.setItem('token', token);
+    localStorage.setItem("token", token);
 
     history.push("/dashboard");
   }
 
-  function handleLoginError(){
+  function handleLoginError() {
     setLoginError(true);
   }
 
@@ -53,7 +52,7 @@ const Login = () => {
             <div className="login-form">
               <form onSubmit={handleLogin}>
                 <h1>Log-in</h1>
-                {loginError? "A senha ou usuário está errado": ''}
+                {loginError ? "A senha ou usuário está errado" : ""}
                 <div className="field">
                   <input
                     onChange={handleChange}
