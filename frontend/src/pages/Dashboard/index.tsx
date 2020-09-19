@@ -20,17 +20,21 @@ interface Person {
   address: string; 
   phone: string;
 }
+
 const Dashboard = () => {
-  
   const [persons, setPersons] = useState<Person[]>([]);
   const token = useContext(JwtContext)
   
   useEffect(() => {
-    api.get('/people', {headers: {"Authorization": "Bearer " + token}})
-    .then(response => {
-      setPersons(response.data)})
-    },[])
-  
+    const timer = setTimeout(() => {
+      api.get('/people', {headers: {"Authorization": "Bearer " + token}})
+      .then(response => {
+        setPersons(response.data)
+      })
+    }, 1000);
+    return () => clearTimeout(timer);
+  },[])
+
   function handleDelete(id:number) {
     const filteredPersons = persons.filter(person => person.id !== id)
     api.delete(`/people/${id}`, {headers: {"Authorization": "Bearer " + token}})
@@ -46,9 +50,9 @@ const Dashboard = () => {
           </Link>
         </header>
         <main>
-          <a href="/createPerson" className="dashboard-button">
+          <Link to="/createPerson" className="dashboard-button">
             Cadastrar Novo Usuário
-          </a>
+          </Link>
           <div className="dashboard-list">
             <ul>
               {
