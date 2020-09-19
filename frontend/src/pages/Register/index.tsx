@@ -18,8 +18,8 @@ interface CityResponse {
 
 const Register = () => {
   const history = useHistory();
-  const [registerError, setRegisterError] = useState(false)
-  const [errors, setErrors] = useState({})
+  const [registerError, setRegisterError] = useState(false);
+  const [errors, setErrors] = useState({});
   const [formData, setFormdata] = useState({
     email: "",
     name: "",
@@ -63,14 +63,16 @@ const Register = () => {
 
   function handleRegister(event: FormEvent) {
     event.preventDefault();
-     api.post('/users',{...formData, city: selectedCity, uf: selectedUf}).then(response => {
-     if(!response.data.error){
-       history.push("/login");
-     }else{
-       setRegisterError(true);
-       setErrors(response.data.errors)
-     }
-   })
+    api
+      .post("/users", { ...formData, city: selectedCity, uf: selectedUf })
+      .then((response) => {
+        if (!response.data.error) {
+          history.push("/login");
+        } else {
+          setRegisterError(true);
+          setErrors(response.data.errors);
+        }
+      });
   }
 
   function handleChange(event: ChangeEvent<HTMLInputElement>) {
@@ -102,7 +104,7 @@ const Register = () => {
             <div className="register-form">
               <form onSubmit={handleRegister}>
                 <h1>Cadastro</h1>
-                {registerError ? <p>{JSON.stringify(errors)}</p> : ''}
+                {registerError ? <p>{JSON.stringify(errors)}</p> : ""}
                 <div className="field-group">
                   <div className="field">
                     <input

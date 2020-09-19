@@ -21,38 +21,41 @@ interface FormProps {
 }
 
 const PersonForm: React.FC<FormProps> = (props) => {
-  
   const [ufs, setUfs] = useState<string[][]>([]);
   const [cities, setCities] = useState<string[]>([]);
   const [selectedUf, setSelectedUf] = useState("0");
   const [selectedCity, setSelectedCity] = useState("0");
-    const [formData, setFormdata] = useState({
-      name: "",
-      email: "",
-      cpf: "",
-      birthdate: "",
-      address: "",
-      cep: "",
-      phone: ""
-    });
+  const [formData, setFormdata] = useState({
+    name: "",
+    email: "",
+    cpf: "",
+    birthdate: "",
+    address: "",
+    cep: "",
+    phone: "",
+  });
 
-    useEffect(() => {
-      if (props.id === undefined ){return};
-      const {id, token} = props
-      api.get(`/people/${id}`,{headers: {"Authorization": "Bearer " + token}}).then(response => {
-        setFormdata({
-        name: response.data.name,
-        email: response.data.email,
-        cpf: response.data.cpf,
-        birthdate: response.data.birthdate,
-        address: response.data.address,
-        cep: response.data.cep,
-        phone: response.data.phone})
-        setSelectedUf(response.data.uf)
-        setSelectedCity(response.data.city)
-      })
+  useEffect(() => {
+    if (props.id === undefined) {
+      return;
     }
-    , []);
+    const { id, token } = props;
+    api
+      .get(`/people/${id}`, { headers: { Authorization: "Bearer " + token } })
+      .then((response) => {
+        setFormdata({
+          name: response.data.name,
+          email: response.data.email,
+          cpf: response.data.cpf,
+          birthdate: response.data.birthdate,
+          address: response.data.address,
+          cep: response.data.cep,
+          phone: response.data.phone,
+        });
+        setSelectedUf(response.data.uf);
+        setSelectedCity(response.data.city);
+      });
+  }, []);
 
   useEffect(() => {
     axios
@@ -97,7 +100,15 @@ const PersonForm: React.FC<FormProps> = (props) => {
 
   return (
     <div className="personForm-form">
-      <form onSubmit={(event) => props.handleSubmit(event, {...formData, city: selectedCity, uf: selectedUf})}>
+      <form
+        onSubmit={(event) =>
+          props.handleSubmit(event, {
+            ...formData,
+            city: selectedCity,
+            uf: selectedUf,
+          })
+        }
+      >
         <div className="field">
           <input
             onChange={handleChange}
@@ -165,7 +176,12 @@ const PersonForm: React.FC<FormProps> = (props) => {
         </div>
         <div className="field-group">
           <div className="field">
-            <select value={selectedUf} onChange={handleSelectUf} required name="uf">
+            <select
+              value={selectedUf}
+              onChange={handleSelectUf}
+              required
+              name="uf"
+            >
               <option value="0">Selecione o seu Estado</option>
               {ufs.map((uf) => (
                 <option key={uf[0]} value={uf[0]}>

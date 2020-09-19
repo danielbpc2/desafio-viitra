@@ -14,13 +14,15 @@ interface EditParams {
 const EditPerson = () => {
   const history = useHistory();
 
-  const token = useContext(JwtContext)
-  
-  const {id} = useParams<EditParams>();
-  
+  const token = useContext(JwtContext);
+
+  const { id } = useParams<EditParams>();
+
   function handleSubmit(event: FormEvent, formData: Object) {
-    event.preventDefault()
-    api.put(`/people/${id}`, formData, {headers: {"Authorization": "Bearer " + token}})
+    event.preventDefault();
+    api.put(`/people/${id}`, formData, {
+      headers: { Authorization: "Bearer " + token },
+    });
     history.push("/dashboard");
   }
 
@@ -35,7 +37,7 @@ const EditPerson = () => {
           </header>
           <main>
             <h1>Edição</h1>
-            <PersonForm handleSubmit={handleSubmit} id={id} token={token}/>
+            <PersonForm handleSubmit={handleSubmit} id={id} token={token} />
           </main>
         </div>
       </div>
