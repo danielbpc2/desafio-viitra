@@ -36,7 +36,7 @@ User.create!({
 Person.create!({
   name: "Diego Carvalho",
   cpf: "111.123.123-00",
-  birthday: "19/07/2020",
+  birthdate: "19/07/2020",
   email: "diegoP@email.com",
   address: "rua ali perto",
   phone: "999999999",

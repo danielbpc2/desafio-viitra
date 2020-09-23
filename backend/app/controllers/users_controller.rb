@@ -4,7 +4,8 @@ class UsersController < ApplicationController
   def index
     @users = User.all
     response = @users.map { |user|
-      { id: user.id, name: user.name, address: user.address,
+      {
+        id: user.id, name: user.name, address: user.address,
         cpf: @user.cpf,
         birthdate: @user.birthdate,
         email: @user.email,
@@ -15,14 +16,15 @@ class UsersController < ApplicationController
         uf: @user.uf,
         created_at: @user.created_at,
         updated_at: @user.updated_at,
-        role: @user.role }
+        role: @user.role,
+      }
     }
     render json: response
   end
 
   def create
     @new_user = User.new(user_params)
-    if params[:role].present? && !@user.is_admin?
+    if params[:role].present? && @user.is_admin?
       return render json: { message: "Você não tem permissão para essa ação" }, status: :unauthorized
     end
 
